@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>High Charts Example
+    </title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="/js/themes/sunset.js"></script>
+</head>
+
+<body>
+    <h1>Collective Academy - Sample Student Visualization</h1>
+    <h4>Sample Bar Chart</h4>
+    <div id="container" style="width:80%; height:400px; padding:0 100px 0 100px;"></div>
+    <h4>Sample Line Chart</h4>
+    <div id="container2" style="width:80%; height:400px; padding:0 100px 0 100px;"></div>
+
+    <script>
+        Highcharts.theme = {
+            colors: ['gray', '#E7393A'],
+            chart: {
+                backgroundColor: {
+                    linearGradient: [0, 0, 50, 500],
+                    stops: [
+                        [0, 'white'],
+                        [1, 'white']
+                    ]
+                },
+            },
+            title: {
+                style: {
+                    color: '#000',
+                    font: 'bold 16px "Trebuchet MS", Avenir, sans-serif'
+                }
+            },
+            subtitle: {
+                style: {
+                    color: '#666666',
+                    font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+                }
+            },
+            legend: {
+                itemStyle: {
+                    font: '9pt Trebuchet MS, Verdana, sans-serif',
+                    color: 'black'
+                },
+                itemHoverStyle: {
+                    color: 'gray'
+                }
+            }
+        };
+        // Apply the theme
+        Highcharts.setOptions(Highcharts.theme);
+
+        //--------STARTING BAR CHART HERE ---------//
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var myChart = Highcharts.chart('container', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Computer Science - Session 1'
+                },
+                xAxis: {
+                    categories: ['Competency 1', 'Competency 2', 'Competency 3']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Your scores'
+                    }
+                },
+                series: [{
+                    name: 'Self',
+                    data: [1, 3, 4]
+                }, {
+                    name: 'Peers',
+                    data: [5, 7, 3]
+                }]
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var myChart = Highcharts.chart('container2', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Computer Science - Over Time'
+                },
+                xAxis: {
+                    categories: ['March 19', 'April 19', 'May 19']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Your scores'
+                    }
+                },
+                series: [{
+                    name: 'Self',
+                    data: [1, 3, 4]
+                }, {
+                    name: 'Peers',
+                    data: [5, 7, 3]
+                }]
+            });
+        });
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
