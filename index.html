@@ -12,15 +12,62 @@
 </head>
 
 <body>
+
+    <style>
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
     <h1>Collective Academy - Sample Student Visualization</h1>
+    <h4>The following visualizations are based on mock-ups received by Collective Academy staff on 01/09/2020. The
+        first chart below is intended to be nestled in the student view on the Eva platform. The second is intended to
+        be nestled under the administrative/manager platform. The visualizations are
+        built using the High Charts Javascript framework. </h4>
+    <h4>Please provide feedback on the following items:</h4>
+
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Feedback Questions</th>
+        </tr>
+        <tr>
+            <td>Look at feel</td>
+            <td>Are the graphs displaying the ideal color scheme?</td>
+        </tr>
+        <tr>
+            <td>Data display</td>
+            <td>Is the data displayed the relevant data? What is the competency scale? Right now it is set as 0-3 in
+                increments of 0.5.</td>
+        </tr>
+        <tr>
+            <td>Usability</td>
+            <td>For the aggregate graph, is a column chart the most appropriate given the volume of the stuents in each
+                cohort?</td>
+        </tr>
+        <tr>
+            <td>Competency types</td>
+            <td>How many competencies are there? Are they fixed (unchanging)?</td>
+        </tr>
+    </table>
+    <hr>
+
+
     <h4>Sample Bar Chart</h4>
     <div id="container" style="width:80%; height:400px; padding:0 100px 0 100px;"></div>
+    <hr>
     <h4>Sample Line Chart</h4>
-    <div id="container2" style="width:80%; height:400px; padding:0 100px 0 100px;"></div>
-
+    <!-- <div id="container2" style="width:80%; height:400px; padding:0 100px 0 100px;"></div> -->
+    <div id="container3" style="width:80%; height:400px; padding:0 100px 0 100px;"></div>
     <script>
         Highcharts.theme = {
-            colors: ['gray', '#E7393A'],
+            colors: ['gray', '#E7393A', 'black'],
             chart: {
                 backgroundColor: {
                     linearGradient: [0, 0, 50, 500],
@@ -75,38 +122,106 @@
                 },
                 series: [{
                     name: 'Self',
-                    data: [1, 3, 4]
+                    data: [1, 3, 2]
                 }, {
                     name: 'Peers',
-                    data: [5, 7, 3]
-                }]
+                    data: [2, 3, 0.5]
+                }, {
+                    name: 'Mentor',
+                    data: [3, 2, 3]
+                }
+                ]
             });
         });
 
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     var myChart = Highcharts.chart('container2', {
+        //         chart: {
+        //             type: 'line'
+        //         },
+        //         title: {
+        //             text: 'Computer Science - Over Time'
+        //         },
+        //         xAxis: {
+        //             categories: ['March 19', 'April 19', 'May 19']
+        //         },
+        //         yAxis: {
+        //             title: {
+        //                 text: 'Your scores'
+        //             }
+        //         },
+        //         series: [{
+        //             name: 'Self',
+        //             data: [1, 3, 4]
+        //         }, {
+        //             name: 'Peers',
+        //             data: [5, 7, 3]
+        //         }]
+        //     });
+        // });
+
         document.addEventListener('DOMContentLoaded', function () {
-            var myChart = Highcharts.chart('container2', {
+            var myChart3 = Highcharts.chart('container3', {
                 chart: {
-                    type: 'line'
+                    type: 'column'
                 },
                 title: {
-                    text: 'Computer Science - Over Time'
+                    text: 'Student Competency Summary - Aggreate View'
+                },
+                subtitle: {
+                    text: 'Atlas Class'
                 },
                 xAxis: {
-                    categories: ['March 19', 'April 19', 'May 19']
+                    categories: [
+                        'Student 1',
+                        'Student 2',
+                        'Student 3',
+                        'Student 4',
+                        'Student 5',
+                        'Student 6',
+                        'Student 7',
+                        'Student 8',
+                        'Student 9',
+                        'Student 10',
+                        'Student 11',
+                        'Student 12'
+                    ],
+                    crosshair: true
                 },
                 yAxis: {
+                    min: 0,
                     title: {
-                        text: 'Your scores'
+                        text: 'Competency development'
+                    }
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
                     }
                 },
                 series: [{
-                    name: 'Self',
-                    data: [1, 3, 4]
+                    name: 'Competency 1',
+                    data: [1, 0.5, 2.5, 3, 2.5, 1.5, 3, 1.5, 1, 3, 2]
+
                 }, {
-                    name: 'Peers',
-                    data: [5, 7, 3]
+                    name: 'Competency 2',
+                    data: [3, 2.5, 1.5, 3, 1.5, 1, 3, 2, 1, 0.5, 2.5]
+
+                }, {
+                    name: 'Competency 3',
+                    data: [3, 2.5, 1.5, 3, 1.5, 1, 2, 1, 0.5, 2.5, 3]
+
                 }]
-            });
+            })
         });
 
     </script>
